@@ -1,0 +1,102 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+	margin: 30px auto;
+	width: 700px;
+	text-align: center;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.logo {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.btn {
+	width: 150px;
+	height: 40px;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25);
+	outline-style: none;
+	background-color: #bdbdbd;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.btn:hover {
+	transform: translateY(-3px);
+	color: #fff;
+}
+
+.btn_login {
+	background-color: #4b9c7b;
+}
+
+.btn_logout {
+	background-color: #c85b5b;
+}
+
+.hidden {
+	display: none;
+}
+
+.title {
+	margin: 50px 0 30px;
+}
+
+.friend-item {
+	padding: 10px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.friend-item:hover {
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25);
+}
+
+.user_avatar,
+.friend_avatar {
+	border-radius: 50%;
+}
+
+.user_avatar {
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25);
+}
+
+.friend_text {
+	margin-left: 20px;
+	text-align: left;
+}
+
+.status {
+	color: #b9b9b9;
+}
+
+.user_name {
+	margin-top: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.warning {
+	font-weight: bold;
+	color: #c85b5b;
+}
