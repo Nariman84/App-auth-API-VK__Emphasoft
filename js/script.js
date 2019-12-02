@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 						localStorage.setItem('authSession', serialSession);
 
 						clearWarningDiv();
+						toggleContent();
 						changeStateButtons();
 						getLoginUserPhoto(user);
 						getFriends(user);
@@ -35,6 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		);
 	});
 
+	const toggleContent = () => {
+		let content = document.querySelector('.content');
+		content.classList.toggle('hidden');
+		return;
+	};
 	//показать сообщение об ошибке авторизации
 	const setStatusToWarningDiv = text => {
 		let warningDiv = document.querySelector('.warning');
@@ -74,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		let friendsDiv = document.querySelector('.friends'),
 			friendList = document.createElement('div');
 			friendList.classList.add('friend-list');
+			friendList.innerHTML = '<h3 class="title-friends">Друзья:</h3>';
 			friendsDiv.append(friendList);
 
 			friendArr.map(item => {
@@ -84,11 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
 					<img class="friend_avatar" src=${item.photo_50} />
 					<div class="friend_text">
 						<div class="friend_name">${item.first_name} ${item.last_name}</div>
-						<div class="status">${item.online ? 'online' : 'offline'}</div>
+						<div class="status">${item.online ? 'в сети' : 'не в сети'}</div>
 					</div>`;
 
 				friendList.append(friendItem);
-				
+
 			});
 	};
 
@@ -115,11 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
 		userLogin.innerHTML = `
 			<img class="user_avatar" src=${user.photo_100} />
 			<div class="user_name">${user.first_name} ${user.last_name}</div>
-			<div class="status">${user.online ? 'online' : 'offline'}</div>`;
+			<div class="status">${user.online ? 'в сети' : 'не в сети'}</div>`;
 	}
 
 	//выход из приложения
 	btnLogout.addEventListener('click', () => {
+		toggleContent();
 		changeStateButtons();
 		localStorage.clear();
 		VK.Auth.logout(
@@ -153,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			let storageSession = JSON.parse(localStorage['authSession']);
 			let user = storageSession.user;
 
+			toggleContent();
 			getLoginUserPhoto(user);
 			getFriends(user);
 		}
